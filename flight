@@ -1,0 +1,56 @@
+public class Flight {
+    private Passenger head; // Referensi ke penumpang pertama dalam daftar
+
+    // Metode untuk menambah penumpang di akhir daftar
+    public void addPassenger(String name) {
+        Passenger newPassenger = new Passenger(name);
+        if (head == null) {
+            head = newPassenger; // Jika daftar kosong, tambahkan penumpang pertama
+        } else {
+            Passenger current = head;
+            while (current.getNext() != null) {
+                current = current.getNext(); // Cari penumpang terakhir
+            }
+            current.setNext(newPassenger); // Tambahkan penumpang baru di akhir
+        }
+    }
+
+    // Metode untuk menghapus penumpang berdasarkan nama
+    public void removePassenger(String name) {
+        if (head == null) {
+            System.out.println("Daftar penumpang kosong.");
+            return;
+        }
+
+        // Jika penumpang yang akan dihapus adalah penumpang pertama
+        if (head.getName().equals(name)) {
+            head = head.getNext(); // Pindahkan kepala ke penumpang berikutnya
+            return;
+        }
+
+        Passenger current = head;
+        while (current.getNext() != null) {
+            if (current.getNext().getName().equals(name)) {
+                current.setNext(current.getNext().getNext()); // Hapus penumpang
+                return;
+            }
+            current = current.getNext(); // Pindah ke penumpang berikutnya
+        }
+
+        System.out.println("Penumpang dengan nama " + name + " tidak ditemukan.");
+    }
+
+    // Metode untuk menampilkan semua penumpang
+    public void displayPassengers() {
+        if (head == null) {
+            System.out.println("Daftar penumpang kosong.");
+            return;
+        }
+
+        Passenger current = head;
+        while (current != null) {
+            System.out.println(current.getName());
+            current = current.getNext(); // Pindah ke penumpang berikutnya
+        }
+    }
+}
