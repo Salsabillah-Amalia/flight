@@ -1,0 +1,30 @@
+public class Passenger {
+    private String name;   // Nama penumpang
+    private Passenger next; // Referensi ke penumpang berikutnya
+
+    // Konstruktor
+    public Passenger(String name) {
+        this.name = name;
+        this.next = null; // Awalnya, next adalah null
+    }
+
+    // Getter untuk name
+    public String getName() {
+        return name;
+    }
+
+    // Setter untuk name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter untuk next
+    public Passenger getNext() {
+        return next;
+    }
+
+    // Setter untuk next
+    public void setNext(Passenger next) {
+        this.next = next;
+    }
+}
